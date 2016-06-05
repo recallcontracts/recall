@@ -3,10 +3,8 @@
  */
 package recall.run;
 
-import recall.algorithms.ClauseDecomposer;
-import recall.model.contracts.Clause;
-import recall.model.contracts.Contract;
-import recall.parser.ContractLoader;
+import java.util.Enumeration;
+import java.util.Properties;
 import recall.parser.MalformedContractException;
 
 /**
@@ -36,21 +34,13 @@ public class ConsoleUtil {
     public static final String BG_WHITE = "\u001B[47m";
 
     public static void main(String[] args) throws MalformedContractException {
-        Contract contract = ContractLoader.loadFromText("{i,j}[a&b]({j,k}F(c));");
-        Clause c1 = contract.getFullContract();
-        System.out.println(c1);
-        System.out.println();
-        Clause c2 = ClauseDecomposer.processComposedActions(c1);
-        System.out.println(c2);
+        System.out.println("Runtime.getRuntime().availableProcessors(): "+Runtime.getRuntime().availableProcessors());
+        System.out.println("Runtime.getRuntime().freeMemory(): "+Runtime.getRuntime().freeMemory());
+        System.out.println("Runtime.getRuntime().maxMemory(): "+ Runtime.getRuntime().maxMemory());        
+        while (System.getProperties().elements().hasMoreElements()){
+            System.out.println(System.getProperties().elements().nextElement());
+        }
         
-        Clause c3 = ClauseDecomposer.processComposedActions(c2);
-        System.out.println(c3);
-
-        Clause c4 = ClauseDecomposer.processComposedActions(c3);
-        System.out.println(c4);
-
-        Clause c5 = ClauseDecomposer.processComposedActions(c4);
-        System.out.println(c5);
     }
 
 }

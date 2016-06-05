@@ -23,12 +23,13 @@ public class RunConfiguration {
     private String automatonFileName;
     private LogLevel logLevel;
     private String globalLogFilename;
+    private boolean test;
 
     public RunConfiguration() {
         exportAutomaton = exportDecompositions = false;
         logLevel = LogLevel.NORMAL;
         continueOnConflict = false;
-        //useSelfActions = false;
+        test = false;
         usePrunning = true;
     }
 
@@ -112,16 +113,15 @@ public class RunConfiguration {
     public void setExportMinAutomaton(boolean exportMinAutomaton) {
         this.exportMinAutomaton = exportMinAutomaton;
     }
-    
-    
 
-//    public boolean isUseSelfActions() {
-//        return useSelfActions;
-//    }
-//
-//    public void setUseSelfActions(boolean useSelfActions) {
-//        this.useSelfActions = useSelfActions;
-//    }
+    public boolean isTest() {
+        return test;
+    }
+
+    public void setTest(boolean test) {
+        this.test = test;
+    }
+
     public boolean isUsePrunning() {
         return usePrunning;
     }

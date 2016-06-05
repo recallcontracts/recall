@@ -24,12 +24,17 @@ import recall.util.RunConfiguration;
 public class Main {
 
     public static void main(String[] args) {
-        /* USED FOR TESTS IN IDE */
-//         RunConfiguration config = RunConfiguration.getConfig("c.rcl"); 
-//         ContractLoader.setShowParseTree(true);
-        /* ***************** */
+        // USED FOR TESTS IN IDE //
+        // RunConfiguration config = RunConfiguration.getConfig("c.rcl"); 
+        // ContractLoader.setShowParseTree(true);
+        ///////////////////////////
+
         RunConfiguration config = CommandLineUtil.parseParams(args);
         Logger.configure(config);
+        if (config.isTest()) {
+            doTests(config);
+            return;
+        }
         Logger.getInstance().log(LogType.ADDITIONAL, "Using " + config);
         Logger.getInstance().log(LogType.MINIMAL, "Analysing contract in " + config.getContractFileName());
         try {
@@ -47,8 +52,8 @@ public class Main {
             }
             if (config.isExportAutomaton()) {
                 Logger.getInstance().log(LogType.MINIMAL, "Exporting Automaton to " + config.getAutomatonFileName());
-                if (config.isExportMinAutomaton()){
-                    FileUtil.writeToFile(config.getAutomatonFileName()+"__min", AutomatonExporter.dumpToMinDot(automaton));    
+                if (config.isExportMinAutomaton()) {
+                    FileUtil.writeToFile(config.getAutomatonFileName() + "__min", AutomatonExporter.dumpToMinDot(automaton));
                 }
                 FileUtil.writeToFile(config.getAutomatonFileName(), AutomatonExporter.dumpToDot(automaton));
             }
@@ -108,6 +113,32 @@ public class Main {
             sb.append(ConsoleUtil.FG_GREEN + "[CONFLICT-FREE] " + ConsoleUtil.FG_WHITE + "The analyzed contract is conflict-free." + ConsoleUtil.RESET).append("\n");
         }
         return sb.toString();
+    }
+
+    private static void doTests(RunConfiguration config) {
+        try {
+            Contract contract = ContractLoader.loadFromFile(config.getContractFileName());            
+            long init = System.currentTimeMillis();
+            Automaton automaton = new AutomataConstructor(config).process(contract);
+            long t = System.currentTimeMillis() - init;
+            System.out.println(t + ";" + 
+                            automaton.getStates().size() + ";" + 
+                            automaton.getTransitions().size() + ";" + 
+                            (automaton.isConflictFound()?1:0) + ";" + 
+                            automaton.getConflicts().size()
+            );
+            FileUtil.writeToFile(config.getAutomatonFileName() + "__min", AutomatonExporter.dumpToMinDot(automaton));
+            FileUtil.writeToFile(config.getAutomatonFileName(), AutomatonExporter.dumpToDot(automaton));
+            Logger.getInstance().log(LogType.ADDITIONAL, printResult(automaton, System.currentTimeMillis() - init));
+        } catch (Exception ex) {
+            Logger.getInstance().log(LogType.MINIMAL, "A fatal error ocurred");
+            Logger.getInstance().logException(ex);
+            if (ex instanceof ParseCancellationException) {
+                Logger.getInstance().log(LogType.MINIMAL, "Malformed Contract, please check the syntax.");
+            }
+        } finally {
+            Logger.terminate();
+        }
     }
 
 }

@@ -35,6 +35,7 @@ public class CommandLineUtil {
         CommandLineParser parser = new DefaultParser();
         try {
             options.addOption(new Option("m", "Min"));
+            options.addOption(new Option("t", "Test"));
             CommandLine line = parser.parse(options, args);
             if (line.hasOption("h")) {
                 printUsage(options);
@@ -68,6 +69,7 @@ public class CommandLineUtil {
                 //config.setUseSelfActions(line.hasOption("s"));
                 config.setContinueOnConflict(line.hasOption("c"));
                 config.setExportMinAutomaton(line.hasOption("m"));
+                config.setTest(line.hasOption("t"));
             }
         } catch (ParseException exp) {
             printUsage(options, "Invalid parameters.  Reason: " + exp.getMessage());

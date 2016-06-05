@@ -97,6 +97,7 @@ public class Automaton implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("States: %d \n", states.size()));
         sb.append(String.format("Transitions: %d \n", transitions.size()));
+        sb.append(String.format("Conflicting: %b \n", conflictFound));
         return sb.toString();
     }
 
