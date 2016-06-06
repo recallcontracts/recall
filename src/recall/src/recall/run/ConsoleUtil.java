@@ -36,11 +36,7 @@ public class ConsoleUtil {
     public static void main(String[] args) throws MalformedContractException {
         System.out.println("Runtime.getRuntime().availableProcessors(): "+Runtime.getRuntime().availableProcessors());
         System.out.println("Runtime.getRuntime().freeMemory(): "+Runtime.getRuntime().freeMemory());
-        System.out.println("Runtime.getRuntime().maxMemory(): "+ Runtime.getRuntime().maxMemory());        
-        while (System.getProperties().elements().hasMoreElements()){
-            System.out.println(System.getProperties().elements().nextElement());
-        }
-        
+        System.out.println("Runtime.getRuntime().maxMemory(): "+ Runtime.getRuntime().maxMemory());
     }
 
 }
