@@ -1,0 +1,81 @@
+2019-08-14 10:50:55 [estudo_de_caso]: Analysing contract in estudo_de_caso.rcl
+2019-08-14 10:50:55 [estudo_de_caso]: A fatal error ocurred
+2019-08-14 10:50:55 [estudo_de_caso]: org.antlr.v4.runtime.misc.ParseCancellationException
+	at org.antlr.v4.runtime.BailErrorStrategy.recover(BailErrorStrategy.java:75)
+	at recall.parser.RelativizedCLParser.contract(RelativizedCLParser.java:193)
+	at recall.parser.ContractLoader.load(ContractLoader.java:53)
+	at recall.parser.ContractLoader.loadFromFile(ContractLoader.java:43)
+	at recall.parser.ContractLoader.loadFromFile(ContractLoader.java:39)
+	at recall.run.Main.main(Main.java:41)
+Caused by: org.antlr.v4.runtime.NoViableAltException
+	at org.antlr.v4.runtime.atn.ParserATNSimulator.noViableAlt(ParserATNSimulator.java:1894)
+	at org.antlr.v4.runtime.atn.ParserATNSimulator.execATN(ParserATNSimulator.java:498)
+	at org.antlr.v4.runtime.atn.ParserATNSimulator.adaptivePredict(ParserATNSimulator.java:424)
+	at recall.parser.RelativizedCLParser.contract(RelativizedCLParser.java:144)
+	... 4 more
+
+2019-08-14 10:50:55 [estudo_de_caso]: Malformed Contract, please check the syntax.
+2019-08-14 10:52:06 [estudo_de_caso]: Analysing contract in estudo_de_caso.rcl
+2019-08-14 10:52:07 [estudo_de_caso]: Loaded Contract: 
+  {b,k}[!notifyDelivery*]({k,s}PROHIBITION(payProduct)_/F/_)
+  {s,k}[!liberateShippingCosts*]({k,c}PROHIBITION(payShippingCosts)_/F/_)
+  {k,c}[!notifyShippingPayment*]({c,b}PROHIBITION(deliverProduct)_/F/_)
+  {b,s}[buyProduct]({b,k}[payProduct]({k,s}[notifyProductPayment]({s,k}[payShippingCosts]({s,c}[sendProduct]({c,b}[deliverProduct]({c,s}[notifyProductDelivery]({s,k}[liberateShippingCosts]({k,c}OBLIGATION(payShippingCosts)_/F/_) AND {s,k}OBLIGATION(liberateShippingCosts)_/F/_) AND {b,k}[notifyProductReceipt]({k,c}OBLIGATION(payProduct)_/F/_) AND {c,s}OBLIGATION(notifyProductDelivery)_/F/_ AND {b,k}OBLIGATION(notifyProductReceipt)_/F/_) AND {c,b}OBLIGATION(deliverProduct)_/F/_) AND {k,c}OBLIGATION(notifyShippingPayment)_/F/_) AND {s,k}OBLIGATION(payShippingCosts)_/F/_ AND {s,c}OBLIGATION(sendProduct)_/F/_) AND {k,s}OBLIGATION(notifyProductPayment)_/F/_) AND {b,k}OBLIGATION(payProduct)_/F/_)
+Conflicts: 
+	Global:[]
+	Relativized:[]
+
+2019-08-14 10:52:07 [estudo_de_caso]: Processing contract...
+2019-08-14 10:52:07 [estudo_de_caso]: Completed in 285ms
+[CONFLICT-FREE] The analyzed contract is conflict-free.
+
+2019-08-14 10:52:07 [estudo_de_caso]: Exporting Decompositions to automato.csv
+2019-08-14 10:52:07 [estudo_de_caso]: Exporting Automaton to automato
+2019-08-14 10:53:39 [estudo_de_caso]: Analysing contract in estudo_de_caso.rcl
+2019-08-14 10:53:39 [estudo_de_caso]: Loaded Contract: 
+  {b,k}[!notifyDelivery*]({k,s}PROHIBITION(payProduct)_/F/_)
+  {s,k}[!liberateShippingCosts*]({k,c}PROHIBITION(payShippingCosts)_/F/_)
+  {k,c}[!notifyShippingPayment*]({c,b}PROHIBITION(deliverProduct)_/F/_)
+  {b,s}[buyProduct]({b,k}[payProduct]({k,s}[notifyProductPayment]({s,k}[payShippingCosts]({s,c}[sendProduct]({c,b}[deliverProduct]({c,s}[notifyProductDelivery]({s,k}[liberateShippingCosts]({k,c}OBLIGATION(payShippingCosts)_/F/_) AND {s,k}OBLIGATION(liberateShippingCosts)_/F/_) AND {b,k}[notifyProductReceipt]({k,c}OBLIGATION(payProduct)_/F/_) AND {c,s}OBLIGATION(notifyProductDelivery)_/F/_ AND {b,k}OBLIGATION(notifyProductReceipt)_/F/_) AND {c,b}OBLIGATION(deliverProduct)_/F/_) AND {k,c}OBLIGATION(notifyShippingPayment)_/F/_) AND {s,k}OBLIGATION(payShippingCosts)_/F/_ AND {s,c}OBLIGATION(sendProduct)_/F/_) AND {k,s}OBLIGATION(notifyProductPayment)_/F/_) AND {b,k}OBLIGATION(payProduct)_/F/_)
+Conflicts: 
+	Global:[]
+	Relativized:[]
+
+2019-08-14 10:53:39 [estudo_de_caso]: Processing contract...
+2019-08-14 10:53:39 [estudo_de_caso]: Completed in 285ms
+[CONFLICT-FREE] The analyzed contract is conflict-free.
+
+2019-08-14 10:53:39 [estudo_de_caso]: Exporting Decompositions to automato.csv
+2019-08-14 10:53:40 [estudo_de_caso]: Exporting Automaton to automato
+2019-08-14 10:57:32 [estudo_de_caso]: Analysing contract in estudo_de_caso.rcl
+2019-08-14 10:57:32 [estudo_de_caso]: Loaded Contract: 
+  {b,k}[!notifyDelivery*]({k,s}PROHIBITION(payProduct)_/F/_)
+  {s,k}[!liberateShippingCosts*]({k,c}PROHIBITION(payShippingCosts)_/F/_)
+  {k,c}[!notifyShippingPayment*]({c,b}PROHIBITION(deliverProduct)_/F/_)
+  {b,s}[buyProduct]({b,k}[payProduct]({k,s}[notifyProductPayment]({s,k}[payShippingCosts]({s,c}[sendProduct]({c,b}[deliverProduct]({c,s}[notifyProductDelivery]({s,k}[liberateShippingCosts]({k,c}OBLIGATION(payShippingCosts)_/F/_) AND {s,k}OBLIGATION(liberateShippingCosts)_/F/_) AND {b,k}[notifyProductReceipt]({k,c}OBLIGATION(payProduct)_/F/_) AND {c,s}OBLIGATION(notifyProductDelivery)_/F/_ AND {b,k}OBLIGATION(notifyProductReceipt)_/F/_) AND {c,b}OBLIGATION(deliverProduct)_/F/_) AND {k,c}OBLIGATION(notifyShippingPayment)_/F/_) AND {s,k}OBLIGATION(payShippingCosts)_/F/_ AND {s,c}OBLIGATION(sendProduct)_/F/_) AND {k,s}OBLIGATION(notifyProductPayment)_/F/_) AND {b,k}OBLIGATION(payProduct)_/F/_)
+Conflicts: 
+	Global:[]
+	Relativized:[]
+
+2019-08-14 10:57:32 [estudo_de_caso]: Processing contract...
+2019-08-14 10:57:32 [estudo_de_caso]: Completed in 314ms
+[CONFLICT-FREE] The analyzed contract is conflict-free.
+
+2019-08-14 10:57:32 [estudo_de_caso]: Exporting Decompositions to automato.csv
+2019-08-14 10:57:32 [estudo_de_caso]: Exporting Automaton to automato
+2019-08-14 10:58:00 [estudo_de_caso]: Analysing contract in estudo_de_caso.rcl
+2019-08-14 10:58:01 [estudo_de_caso]: Loaded Contract: 
+  {b,k}[!notifyDelivery*]({k,s}PROHIBITION(payProduct)_/F/_)
+  {s,k}[!liberateShippingCosts*]({k,c}PROHIBITION(payShippingCosts)_/F/_)
+  {k,c}[!notifyShippingPayment*]({c,b}PROHIBITION(deliverProduct)_/F/_)
+  {b,s}[buyProduct]({b,k}[payProduct]({k,s}[notifyProductPayment]({s,k}[payShippingCosts]({s,c}[sendProduct]({c,b}[deliverProduct]({c,s}[notifyProductDelivery]({s,k}[liberateShippingCosts]({k,c}OBLIGATION(payShippingCosts)_/F/_) AND {s,k}OBLIGATION(liberateShippingCosts)_/F/_) AND {b,k}[notifyProductReceipt]({k,c}OBLIGATION(payProduct)_/F/_) AND {c,s}OBLIGATION(notifyProductDelivery)_/F/_ AND {b,k}OBLIGATION(notifyProductReceipt)_/F/_) AND {c,b}OBLIGATION(deliverProduct)_/F/_) AND {k,c}OBLIGATION(notifyShippingPayment)_/F/_) AND {s,k}OBLIGATION(payShippingCosts)_/F/_ AND {s,c}OBLIGATION(sendProduct)_/F/_) AND {k,s}OBLIGATION(notifyProductPayment)_/F/_) AND {b,k}OBLIGATION(payProduct)_/F/_)
+Conflicts: 
+	Global:[]
+	Relativized:[]
+
+2019-08-14 10:58:01 [estudo_de_caso]: Processing contract...
+2019-08-14 10:58:01 [estudo_de_caso]: Completed in 360ms
+[CONFLICT-FREE] The analyzed contract is conflict-free.
+
+2019-08-14 10:58:01 [estudo_de_caso]: Exporting Decompositions to automato.csv
+2019-08-14 10:58:01 [estudo_de_caso]: Exporting Automaton to automato

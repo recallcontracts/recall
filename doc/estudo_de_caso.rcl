@@ -1,0 +1,21 @@
+{b,s}[buyProduct](
+ {b,k}O(payProduct)ˆ
+ {b,k}[payProduct](
+  {k,s}O(notifyProductPayment)ˆ
+  {k,s}[notifyProductPayment](
+   {s,c}O(sendProduct)ˆ
+   {s,k}O(payShippingCosts)ˆ
+   {s,k}[payShippingCosts](
+    {k,c}O(notifyShippingPayment) ˆ {s,c}[sendProduct](
+    {c,b}O(deliverProduct) ˆ
+     {c,b}[deliverProduct](
+      {b,k}O(notifyProductReceipt) ˆ
+      {c,s}O(notifyProductDelivery) ˆ
+      {b,k}[notifyProductReceipt]({k,c}O(payProduct)) ˆ
+      {c,s}[notifyProductDelivery](
+       {s,k}O(liberateShippingCosts) ˆ
+       {s,k}[liberateShippingCosts]({k,c}O(payShippingCosts))
+)))))));
+{b,k}[(!notifyDelivery)*]({k,s}F(payProduct));
+{s,k}[(!liberateShippingCosts)*]({k,c}F(payShippingCosts));
+{k,c}[(!notifyShippingPayment)*]({c,b}F(deliverProduct));
