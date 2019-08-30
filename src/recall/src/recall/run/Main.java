@@ -56,6 +56,7 @@ public class Main {
                     FileUtil.writeToFile(config.getAutomatonFileName() + "__min", AutomatonExporter.dumpToMinDot(automaton));
                 }
                 FileUtil.writeToFile(config.getAutomatonFileName(), AutomatonExporter.dumpToDot(automaton));
+                FileUtil.writeToFile(config.getAutomatonFileName()+".txt", AutomatonExporter.dumpToText(automaton));
             }
         } catch (Exception ex) {
             Logger.getInstance().log(LogType.MINIMAL, "A fatal error ocurred");
