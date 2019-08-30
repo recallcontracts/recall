@@ -88,7 +88,7 @@ public class AutomatonExporter {
         for (Transition t : automaton.getTransitions()){
             String action = "";
             for (RelativizedAction ra : t.getActions()){
-               action += ra.getSender() + "." + ra.getAction() + "." + ra.getReceiver() + ",";
+               action += SymbolTable.getInstance().getSymbolById(ra.getSender()).getValue() + "?" + ra.getAction() + "?" + SymbolTable.getInstance().getSymbolById(ra.getReceiver()).getValue() + ",";
             }
             transitions += 
                         t.getFrom().getId()+ "-" +
